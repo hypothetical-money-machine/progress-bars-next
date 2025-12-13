@@ -15,11 +15,10 @@ export async function getProgressBars() {
 
 export async function createProgressBar(formData: FormData) {
   const title = formData.get("title") as string;
-  const targetValue = Number.parseInt(
-    formData.get("targetValue") as string,
-    10,
-  );
+  const targetValue = Number.parseFloat(formData.get("targetValue") as string);
   const description = (formData.get("description") as string) || null;
+  const unit = (formData.get("unit") as string) || null;
+  const unitPosition = (formData.get("unitPosition") as string) || null;
 
   const now = new Date();
 
@@ -29,6 +28,8 @@ export async function createProgressBar(formData: FormData) {
     description,
     currentValue: 0,
     targetValue,
+    unit,
+    unitPosition,
     createdAt: now,
     updatedAt: now,
   });

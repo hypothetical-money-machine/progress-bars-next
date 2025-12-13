@@ -8,6 +8,13 @@
       "when": 1765596406415,
       "tag": "0000_third_harpoon",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1765597629365,
+      "tag": "0001_ambitious_bloodstorm",
+      "breakpoints": true
     }
   ]
 }

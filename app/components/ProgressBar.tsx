@@ -18,6 +18,16 @@ function getColorFromId(id: string) {
   return colors[hash % colors.length];
 }
 
+function formatValue(
+  value: number,
+  unit?: string | null,
+  position?: string | null,
+) {
+  const num = value.toLocaleString();
+  if (!unit) return num;
+  return position === "prefix" ? `${unit}${num}` : `${num} ${unit}`;
+}
+
 export function ProgressBar({ bar }: { bar: ProgressBarType }) {
   const [isPending, startTransition] = useTransition();
   const percentage = Math.min((bar.currentValue / bar.targetValue) * 100, 100);
@@ -89,7 +99,8 @@ export function ProgressBar({ bar }: { bar: ProgressBarType }) {
 
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">
-          {bar.currentValue} / {bar.targetValue}
+          {formatValue(bar.currentValue, bar.unit, bar.unitPosition)} /{" "}
+          {formatValue(bar.targetValue, bar.unit, bar.unitPosition)}
         </span>
         <div className="flex gap-2">
           <button
