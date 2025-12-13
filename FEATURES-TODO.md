@@ -52,6 +52,22 @@ A flexible, gamified progress tracking app where users can create bars for anyth
 - [ ] Custom webhooks for any data source
 - [ ] Zapier/Make integration
 
+## Phase 7: Mobile Widgets
+
+- [ ] iOS home screen widgets (small, medium, large sizes)
+- [ ] Android home screen widgets
+- [ ] Lock screen widgets (iOS 16+)
+- [ ] Quick actions (increment from widget without opening app)
+- [ ] Customizable widget appearance (choose which bars to show)
+- [ ] Glanceable "top 3 bars" widget
+- [ ] Single bar focus widget
+
+### Tech Options
+- **Native apps**: Swift (iOS) + Kotlin (Android) - best widget experience
+- **React Native + Expo**: Good balance, expo-widgets for basic support
+- **Capacitor**: Wrap web app, use native plugins for widgets
+- **PWA**: Limited widget support, but installable on home screen
+
 ---
 
 ## Tech Decisions
