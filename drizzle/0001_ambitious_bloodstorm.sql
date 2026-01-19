@@ -11,7 +11,7 @@ CREATE TABLE `__new_progress_bars` (
 	`updated_at` integer NOT NULL
 );
 --> statement-breakpoint
-INSERT INTO `__new_progress_bars`("id", "title", "description", "current_value", "target_value", "unit", "unit_position", "created_at", "updated_at") SELECT "id", "title", "description", "current_value", "target_value", "unit", "unit_position", "created_at", "updated_at" FROM `progress_bars`;--> statement-breakpoint
+INSERT INTO `__new_progress_bars`("id", "title", "description", "current_value", "target_value", "unit", "unit_position", "created_at", "updated_at") SELECT "id", "title", "description", "current_value", "target_value", NULL, NULL, "created_at", "updated_at" FROM `progress_bars`;--> statement-breakpoint
 DROP TABLE `progress_bars`;--> statement-breakpoint
 ALTER TABLE `__new_progress_bars` RENAME TO `progress_bars`;--> statement-breakpoint
 PRAGMA foreign_keys=ON;
