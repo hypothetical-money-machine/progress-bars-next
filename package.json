@@ -21,6 +21,9 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": "biome check --write"
   },
+  "overrides": {
+    "esbuild": "^0.25.12"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "@tailwindcss/postcss": "^4",
