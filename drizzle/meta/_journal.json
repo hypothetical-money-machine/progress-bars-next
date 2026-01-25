@@ -15,6 +15,13 @@
       "when": 1765597629365,
       "tag": "0001_ambitious_bloodstorm",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1768872308402,
+      "tag": "0002_wild_scourge",
+      "breakpoints": true
     }
   ]
 }
