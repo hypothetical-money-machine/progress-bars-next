@@ -15,24 +15,65 @@ export async function getProgressBars() {
 
 export async function createProgressBar(formData: FormData) {
   const title = formData.get("title") as string;
-  const targetValue = Number.parseFloat(formData.get("targetValue") as string);
   const description = (formData.get("description") as string) || null;
-  const unit = (formData.get("unit") as string) || null;
-  const unitPosition = (formData.get("unitPosition") as string) || null;
+  const barType = (formData.get("barType") as string) || "manual";
 
   const now = new Date();
 
-  await db.insert(progressBars).values({
-    id: generateId(),
-    title,
-    description,
-    currentValue: 0,
-    targetValue,
-    unit,
-    unitPosition,
-    createdAt: now,
-    updatedAt: now,
-  });
+  if (barType === "manual") {
+    // Handle manual progress bar
+    const targetValue = Number.parseFloat(
+      formData.get("targetValue") as string,
+    );
+    const unit = (formData.get("unit") as string) || null;
+    const unitPosition = (formData.get("unitPosition") as string) || null;
+
+    await db.insert(progressBars).values({
+      id: generateId(),
+      title,
+      description,
+      currentValue: 0,
+      targetValue,
+      unit,
+      unitPosition,
+      barType: "manual",
+      createdAt: now,
+      updatedAt: now,
+    });
+  } else {
+    // Handle time-based progress bar
+    const timeBasedType = formData.get("timeBasedType") as string;
+    let startDate: string;
+    const targetDate = formData.get("targetDate") as string;
+
+    // For count-down bars, use current date as start date
+    if (timeBasedType === "count-down") {
+      startDate = now.toISOString();
+    } else {
+      startDate = new Date(
+        `${formData.get("startDate") as string}T00:00:00`,
+      ).toISOString();
+    }
+
+    await db.insert(progressBars).values({
+      id: generateId(),
+      title,
+      description,
+      currentValue: 0, // Will be calculated dynamically for time-based bars
+      targetValue: 100, // Percentage-based for time-based bars
+      barType: "time-based",
+      startDate,
+      targetDate: new Date(`${targetDate}T00:00:00`).toISOString(),
+      timeBasedType: timeBasedType as
+        | "count-up"
+        | "count-down"
+        | "arrival-date",
+      isCompleted: false,
+      isOverdue: false,
+      createdAt: now,
+      updatedAt: now,
+    });
+  }
 
   revalidatePath("/");
 }
