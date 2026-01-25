@@ -2,14 +2,22 @@
 
 A flexible, gamified progress tracking app where users can create bars for anything.
 
-## Phase 1: Core MVP
+## Phase 1: Core MVP ✅ COMPLETE
 
-- [ ] Create, edit, delete progress bars
-- [ ] Each bar has: title, current value, target value, optional description
-- [ ] Manual progress updates (increment/decrement, set value)
-- [ ] Progress percentage display with animated fill
-- [ ] SQLite database for persistence
-- [ ] Basic playful UI (colors, satisfying micro-interactions)
+- [x] Create, edit, delete progress bars
+- [x] Each bar has: title, current value, target value, optional description
+- [x] Manual progress updates (increment/decrement, set value)
+- [x] Progress percentage display with animated fill
+- [x] SQLite database for persistence
+- [x] Basic playful UI (colors, satisfying micro-interactions)
+
+### Additional implemented features:
+- [x] Unit support with smart currency detection (prefix/suffix positioning)
+- [x] Animated progress bars with gradient colors
+- [x] Dark mode support
+- [x] Responsive design
+- [x] Loading states and smooth transitions
+- [x] Clerk authentication integration (UI ready)
 
 ## Phase 2: Gamification Layer
 
@@ -30,7 +38,7 @@ A flexible, gamified progress tracking app where users can create bars for anyth
 
 ## Phase 4: Auth & Cloud Sync
 
-- [ ] User accounts (email/password, OAuth)
+- [ ] Connect progress bars to authenticated users (Clerk auth is integrated but bars are currently global)
 - [ ] Cloud database migration (Postgres/Turso)
 - [ ] Sync across devices
 - [ ] Public profile pages (optional)
